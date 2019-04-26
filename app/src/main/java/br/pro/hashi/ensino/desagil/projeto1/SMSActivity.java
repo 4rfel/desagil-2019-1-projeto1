@@ -3,17 +3,10 @@ package br.pro.hashi.ensino.desagil.projeto1;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
-import android.telephony.PhoneNumberUtils;
-import android.telephony.SmsManager;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.LinkedList;
-
 public class SMSActivity extends AppCompatActivity {
 
     // Método de conveniência para mostrar uma bolha de texto.
@@ -37,6 +30,7 @@ public class SMSActivity extends AppCompatActivity {
         TextView textMessage = findViewById(R.id.text_message);
         TextView textPhone = findViewById(R.id.text_phone);
         Button buttonSend = findViewById(R.id.button_send);
+
         Button buttonDigit = findViewById(R.id.button_digit);
         Button buttonDelete = findViewById(R.id.button_delete);
 
@@ -79,4 +73,3 @@ public class SMSActivity extends AppCompatActivity {
         });
     }
 }
-
