@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  GridLayout é um layout bem conveniente para
+  organizar as telas por grade. Neste exemplo,
+  temos uma com duas linhas e duas colunas.
+-->
+
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:layout_row="5"
+    tools:context=".SMSActivity">
+    <!--
+android:columnCount="2"
+android:rowCount="2"
+-->
+
+    <!--
+      Repare que estamos forçando este campo de texto
+      a ocupar duas colunas em vez de apenas uma. Além
+      disso, usamos columnWeight para dizer que ela
+      deve tentar ocupar o espaço horizontal que puder.
+    -->
+    <EditText
+        android:id="@+id/text_message"
+        android:layout_width="340dp"
+        android:layout_height="133dp"
+        android:gravity="top"
+        android:hint="@string/mensagem"/>
+
+    <!--
+      Repare que podemos usar o atributo inputType para
+      dizer especificamente que este campo é número de
+      telefone. Isso é ótimo para usabilidade, pois faz
+      com que o teclado fique restrito apenas a números.
+    -->
+    <EditText
+        android:id="@+id/text_phone"
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:hint="@string/telefone"
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/button_digit"
+        android:layout_width="200dp"
+        android:layout_height="197dp"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_gravity="center"
+        android:layout_marginRight="400px"
+        android:layout_marginLeft="260px"
+        android:hint="@string/pontobarra"/>
+
+</GridLayout>
