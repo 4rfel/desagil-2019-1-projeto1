@@ -16,11 +16,9 @@ public class Translator {
     public Translator() {
         root = null;
         map = null;
-        String[] Morse = {".","-","..",".-","-.","--","...","..-",".-.",".--","-..","-.-","--.","---","....",
-                "...-","..-.",".-..",".--.",".---","-...","-..-","-.-.","-.--","--..","--.-",
-                ".....","....-","...--","..---",".----","-....","--...","---..","----.","-----"};
-        String[] Alfabeto = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
-                "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
+        String[] Morse = {".", "-", "..", ".-", "-.", "--", "...", "..-", ".-.", ".--", "-..", "-.-", "--.", "---", "....",
+                "...-", "..-.", ".-..", ".--.", ".---", "-...", "-..-", "-.-.", "-.--", "--..", "--.-",
+                ".....", "....-", "...--", "..---", ".----", "-....", "--...", "---..", "----.", "-----"};
         Node node0 = new Node('0');
         Node node9 = new Node('9');
         Node node8 = new Node('8');
@@ -67,170 +65,191 @@ public class Translator {
         nodeE.setLeft(nodeE);
         nodeE.setRight(nodeA);
         nodeE.setParent(root);
-        map.put(nodeE.getValue(),nodeE);
+        map.put(nodeE.getValue(), nodeE);
 
         nodeA.setParent(nodeE);
         nodeA.setRight(nodeW);
         nodeA.setLeft(nodeR);
-        map.put(nodeA.getValue(),nodeA);
+        map.put(nodeA.getValue(), nodeA);
 
         nodeR.setParent(nodeA);
         nodeR.setLeft(nodeL);
-        map.put(nodeR.getValue(),nodeR);
+        map.put(nodeR.getValue(), nodeR);
 
         nodeL.setParent(nodeR);
-        map.put(nodeL.getValue(),nodeL);
+        map.put(nodeL.getValue(), nodeL);
 
         nodeW.setParent(nodeA);
         nodeW.setRight(nodeJ);
         nodeW.setLeft(nodeP);
-        map.put(nodeW.getValue(),nodeW);
+        map.put(nodeW.getValue(), nodeW);
 
         nodeP.setParent(nodeW);
-        map.put(nodeP.getValue(),nodeP);
+        map.put(nodeP.getValue(), nodeP);
 
         nodeJ.setParent(nodeW);
         nodeJ.setRight(node1);
-        map.put(nodeJ.getValue(),nodeJ);
+        map.put(nodeJ.getValue(), nodeJ);
 
         node1.setParent(nodeJ);
-        map.put(node1.getValue(),node1);
+        map.put(node1.getValue(), node1);
 
         nodeI.setParent(nodeE);
         nodeI.setRight(nodeU);
         nodeI.setLeft(nodeS);
-        map.put(nodeI.getValue(),nodeI);
+        map.put(nodeI.getValue(), nodeI);
 
         nodeS.setParent(nodeI);
         nodeS.setRight(nodeV);
         nodeS.setLeft(nodeH);
-        map.put(nodeS.getValue(),nodeS);
+        map.put(nodeS.getValue(), nodeS);
 
         nodeH.setParent(nodeS);
         nodeH.setRight(node4);
         nodeH.setLeft(node5);
-        map.put(nodeH.getValue(),nodeH);
+        map.put(nodeH.getValue(), nodeH);
 
         node5.setParent(nodeH);
-        map.put(node5.getValue(),node5);
+        map.put(node5.getValue(), node5);
 
         node4.setParent(nodeH);
-        map.put(node4.getValue(),node4);
+        map.put(node4.getValue(), node4);
 
         nodeV.setParent(nodeS);
         nodeV.setRight(node3);
-        map.put(nodeV.getValue(),nodeV);
+        map.put(nodeV.getValue(), nodeV);
 
         node3.setParent(nodeV);
-        map.put(node3.getValue(),node3);
+        map.put(node3.getValue(), node3);
 
         nodeU.setParent(nodeI);
         nodeU.setLeft(nodeF);
-        map.put(nodeU.getValue(),nodeU);
+        map.put(nodeU.getValue(), nodeU);
 
         nodeF.setParent(nodeU);
-        map.put(nodeF.getValue(),nodeF);
+        map.put(nodeF.getValue(), nodeF);
 
         nodeGhost1.setParent(nodeU);
         nodeGhost1.setRight(node2);
-        map.put(nodeGhost1.getValue(),nodeGhost1);
+        map.put(nodeGhost1.getValue(), nodeGhost1);
 
         node2.setParent(nodeGhost1);
-        map.put(node2.getValue(),node2);
+        map.put(node2.getValue(), node2);
 
         nodeT.setParent(root);
         nodeT.setRight(nodeM);
         nodeT.setLeft(nodeN);
-        map.put(nodeT.getValue(),nodeT);
+        map.put(nodeT.getValue(), nodeT);
 
         nodeN.setParent(nodeT);
         nodeN.setRight(nodeK);
         nodeN.setLeft(nodeD);
-        map.put(nodeN.getValue(),nodeN);
+        map.put(nodeN.getValue(), nodeN);
 
         nodeD.setParent(nodeN);
         nodeD.setRight(nodeX);
         nodeD.setLeft(nodeB);
-        map.put(nodeD.getValue(),nodeD);
+        map.put(nodeD.getValue(), nodeD);
 
         nodeB.setParent(nodeD);
         nodeB.setLeft(node6);
-        map.put(nodeB.getValue(),nodeB);
+        map.put(nodeB.getValue(), nodeB);
 
         nodeX.setParent(nodeD);
-        map.put(nodeX.getValue(),nodeX);
+        map.put(nodeX.getValue(), nodeX);
 
         nodeK.setParent(nodeN);
         nodeK.setRight(nodeY);
         nodeK.setLeft(nodeC);
-        map.put(nodeK.getValue(),nodeK);
+        map.put(nodeK.getValue(), nodeK);
 
         nodeC.setParent(nodeK);
-        map.put(nodeC.getValue(),nodeC);
+        map.put(nodeC.getValue(), nodeC);
 
         nodeY.setParent(nodeK);
-        map.put(nodeY.getValue(),nodeY);
+        map.put(nodeY.getValue(), nodeY);
 
         nodeM.setParent(nodeT);
         nodeM.setRight(nodeO);
         nodeM.setLeft(nodeG);
-        map.put(nodeM.getValue(),nodeM);
+        map.put(nodeM.getValue(), nodeM);
 
         nodeG.setParent(nodeM);
         nodeG.setRight(nodeQ);
         nodeG.setLeft(nodeZ);
-        map.put(nodeG.getValue(),nodeG);
+        map.put(nodeG.getValue(), nodeG);
 
         node7.setParent(nodeZ);
-        map.put(node7.getValue(),node7);
+        map.put(node7.getValue(), node7);
 
         nodeQ.setParent(nodeG);
-        map.put(nodeQ.getValue(),nodeQ);
+        map.put(nodeQ.getValue(), nodeQ);
 
         nodeGhost2.setParent(nodeO);
         nodeGhost2.setLeft(node8);
-        map.put(nodeGhost2.getValue(),nodeGhost2);
+        map.put(nodeGhost2.getValue(), nodeGhost2);
 
         nodeGhost3.setParent(nodeO);
         nodeGhost3.setLeft(node9);
         nodeGhost3.setRight(node0);
-        map.put(nodeGhost3.getValue(),nodeGhost3);
+        map.put(nodeGhost3.getValue(), nodeGhost3);
 
         node8.setParent(nodeGhost2);
-        map.put(node8.getValue(),node8);
+        map.put(node8.getValue(), node8);
 
         node9.setParent(nodeGhost3);
-        map.put(node9.getValue(),node9);
+        map.put(node9.getValue(), node9);
 
         node0.setParent(nodeGhost3);
-        map.put(node0.getValue(),node0);
+        map.put(node0.getValue(), node0);
 
     }
-
 
     // Você deve mudar o recheio deste método, de
     // acordo com os requisitos não-funcionais.
     public char morseToChar(String code) {
-        String Char;
-        for (int i=0;i<=code.length();i++){
-            if
+        Node placenode = root;
+        for (int i = 0; i <= code.length(); i++) {
+            if (code.charAt(i) == '-') {
+                placenode = placenode.getRight();
+            } else if (code.charAt(i) == '.') {
+                placenode = placenode.getLeft();
+            }
         }
-
-        return ' ';
+        return placenode.getValue();
     }
 
 
     // Você deve mudar o recheio deste método, de
     // acordo com os requisitos não-funcionais.
     public String charToMorse(char c) {
-        return " ";
-    }
+        LinkedList<Character> morse = new LinkedList<>();
+        Node atual = map.get(c);
+        String retorno = new String();
+        while (atual != root) {
+            Node parente = atual.getParent();
+            if (parente.getLeft().getValue() == atual.getValue()) {
+                morse.add('.');
+            } else if (parente.getRight().getValue() == atual.getValue()) {
+                morse.add('-');
+            }
+        }
+        for (int i = morse.size(); i >= 0; i--) {
+            retorno += morse.get(i);
+        }
 
+        return retorno;
+    }
 
     // Você deve mudar o recheio deste método, de
     // acordo com os requisitos não-funcionais.
     public LinkedList<String> getCodes() {
-        return new LinkedList<>();
+        LinkedList<String> Codigos = new LinkedList<>();
+        Character[] Alfabeto = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
+        for (int y; y <= Alfabeto.length;y++){
+            Codigos.add(charToMorse(Alfabeto[y]));
+        }
+        return Codigos;
     }
 
 }
