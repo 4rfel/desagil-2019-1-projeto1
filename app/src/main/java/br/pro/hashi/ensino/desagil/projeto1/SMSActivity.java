@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.LinkedList;
-
 public class SMSActivity extends AppCompatActivity {
 
     // Método de conveniência para mostrar uma bolha de texto.
@@ -30,7 +29,6 @@ public class SMSActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms);
-
 
         EditText textMessage = findViewById(R.id.text_message);
 //        textMessage.setOnEditorActionListener(textMessageListener);
@@ -87,4 +85,3 @@ public class SMSActivity extends AppCompatActivity {
 //        });
     }
 }
-
