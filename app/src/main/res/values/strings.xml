@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Projeto1</string>
+    <string name="permition">Pedir Permissão</string>
+    <string name="mensagem">Mensagem</string>
+    <string name="telefone">Telefone</string>
+    <string name="pontobarra">. ou -</string>
 </resources>
