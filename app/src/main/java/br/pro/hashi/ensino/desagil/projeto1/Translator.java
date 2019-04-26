@@ -16,6 +16,11 @@ public class Translator {
     public Translator() {
         root = null;
         map = null;
+        String[] Morse = {".","-","..",".-","-.","--","...","..-",".-.",".--","-..","-.-","--.","---","....",
+                "...-","..-.",".-..",".--.",".---","-...","-..-","-.-.","-.--","--..","--.-",
+                ".....","....-","...--","..---",".----","-....","--...","---..","----.","-----"};
+        String[] Alfabeto = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
+                "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
         Node node5 = new Node('5');
         Node node4 = new Node('4');
         Node node3 = new Node('3');
@@ -44,6 +49,8 @@ public class Translator {
     // Você deve mudar o recheio deste método, de
     // acordo com os requisitos não-funcionais.
     public char morseToChar(String code) {
+
+
         return ' ';
     }
 
