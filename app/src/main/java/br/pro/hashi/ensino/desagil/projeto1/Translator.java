@@ -16,6 +16,7 @@ public class Translator {
     public Translator() {
         root = null;
         map = null;
+        map.put('|',root);
         String[] Morse = {".", "-", "..", ".-", "-.", "--", "...", "..-", ".-.", ".--", "-..", "-.-", "--.", "---", "....",
                 "...-", "..-.", ".-..", ".--.", ".---", "-...", "-..-", "-.-.", "-.--", "--..", "--.-",
                 ".....", "....-", "...--", "..---", ".----", "-....", "--...", "---..", "----.", "-----"};
@@ -208,32 +209,29 @@ public class Translator {
     // Você deve mudar o recheio deste método, de
     // acordo com os requisitos não-funcionais.
     public char morseToChar(String code) {
-        Node placenode = root;
+        Character place = '|';
         for (int i = 0; i <= code.length(); i++) {
             if (code.charAt(i) == '-') {
-                placenode = placenode.getRight();
+                if (map.get(place).getRight() != null){
+                    place = map.get(place).getRight().getValue();
+                }
             } else if (code.charAt(i) == '.') {
-                placenode = placenode.getLeft();
+                place = map.get(place).getLeft().getValue();
             }
         }
-        return placenode.getValue();
+        return map.get(place).getValue();
     }
 
-
-    // Você deve mudar o recheio deste método, de
-    // acordo com os requisitos não-funcionais.
     public String charToMorse(char c) {
         LinkedList<Character> morse = new LinkedList<>();
-        Node atual = map.get(c);
-        String retorno = new String();
-        while (atual != root) {
-            Node parente = atual.getParent();
-            if (parente.getLeft().getValue() == atual.getValue()) {
+        while (map.get(c) != root) {
+            if (map.get(c).getParent().getLeft().getValue() == map.get(c).getValue()) {
                 morse.add('.');
-            } else if (parente.getRight().getValue() == atual.getValue()) {
+            } else if (map.get(c).getParent().getRight().getValue() == map.get(c).getValue()) {
                 morse.add('-');
             }
         }
+        String retorno = "";
         for (int i = morse.size(); i >= 0; i--) {
             retorno += morse.get(i);
         }
