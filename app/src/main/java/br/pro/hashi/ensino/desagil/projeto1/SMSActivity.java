@@ -1,6 +1,5 @@
 package br.pro.hashi.ensino.desagil.projeto1;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -39,9 +38,6 @@ public class SMSActivity extends AppCompatActivity {
 
         Button buttonDict = findViewById(R.id.dict);
 
-        final long bootTime = SystemClock.elapsedRealtime();
-        lastClickTime = bootTime;
-
         textMessage.setText("");
 
         // Botão do ponto ou barra
@@ -49,16 +45,18 @@ public class SMSActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Long timeNow = SystemClock.elapsedRealtime();
-                Long timeElapsed = SystemClock.elapsedRealtime() - lastClickTime;
-                if (timeElapsed > 950.0) {
-                    textMessage.append("-");
-                } else {
-                    textMessage.append(".");
-                }
-                lastClickTime = timeNow;
-                }
+                textMessage.append(".");
+            }
             });
+
+        buttonDigit.setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View view) {
+                textMessage.append("-");
+                return true;
+            }
+        });
 
         // Botão dicionário -> funcionalidade ainda a ser implementada
 //        buttonDict.setOnClickListener(new View.OnClickListener() {
