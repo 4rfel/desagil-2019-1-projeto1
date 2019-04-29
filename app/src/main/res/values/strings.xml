@@ -6,4 +6,6 @@
     <string name="pontobarra">. ou -</string>
     <string name="delete">Delete</string>
     <string name="envio">Enviar</string>
+    <string name="space">Espaço</string>
+    <string name="mmp">Mensagens Prontas</string>
 </resources>
