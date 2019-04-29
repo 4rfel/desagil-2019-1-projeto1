@@ -16,8 +16,7 @@ public class Translator {
     public Translator() {
         root = new Node(' ');
         map = new HashMap<>();
-        map.put('|',root);
-
+        map.put(root.getValue(),root);
         Node node0 = new Node('0');
         Node node9 = new Node('9');
         Node node8 = new Node('8');
@@ -56,16 +55,17 @@ public class Translator {
         Node nodeZ = new Node('z');
 
         Node nodeGhost1 = new Node('*');
-        Node nodeGhost2 = new Node('*');
-        Node nodeGhost3 = new Node('*');
+        Node nodeGhost2 = new Node('=');
+        Node nodeGhost3 = new Node('+');
 
         root.setLeft(nodeE);
+        root.setRight(nodeT);
+
         nodeE.setParent(root);
         nodeE.setLeft(nodeI);
         nodeE.setRight(nodeA);
         map.put(nodeE.getValue(), nodeE);
 
-        root.setRight(nodeT);
         nodeT.setParent(root);
         nodeT.setLeft(nodeN);
         nodeT.setRight(nodeM);
@@ -128,6 +128,7 @@ public class Translator {
 
         nodeU.setParent(nodeI);
         nodeU.setLeft(nodeF);
+        nodeU.setRight(nodeGhost1);
         map.put(nodeU.getValue(), nodeU);
 
         nodeF.setParent(nodeU);
@@ -166,8 +167,8 @@ public class Translator {
         map.put(nodeX.getValue(), nodeX);
 
         nodeK.setParent(nodeN);
-        nodeK.setRight(nodeY);
         nodeK.setLeft(nodeC);
+        nodeK.setRight(nodeY);
         map.put(nodeK.getValue(), nodeK);
 
         nodeC.setParent(nodeK);
@@ -186,11 +187,20 @@ public class Translator {
         nodeG.setLeft(nodeZ);
         map.put(nodeG.getValue(), nodeG);
 
+        nodeZ.setParent(nodeG);
+        nodeZ.setLeft(node7);
+        map.put(nodeZ.getValue(),nodeZ);
+
         node7.setParent(nodeZ);
         map.put(node7.getValue(), node7);
 
         nodeQ.setParent(nodeG);
         map.put(nodeQ.getValue(), nodeQ);
+
+        nodeO.setParent(nodeM);
+        nodeO.setRight(nodeGhost3);
+        nodeO.setLeft(nodeGhost2);
+        map.put(nodeO.getValue(),nodeO);
 
         nodeGhost2.setParent(nodeO);
         nodeGhost2.setLeft(node8);
@@ -215,42 +225,47 @@ public class Translator {
     // Você deve mudar o recheio deste método, de
     // acordo com os requisitos não-funcionais.
     public char morseToChar(String code) {
-        Character place = '|';
-        for (int i = 0; i <= code.length(); i++) {
-            if (code.charAt(i) == '-') {
-                if (map.get(place).getRight() != null){
-                    place = map.get(place).getRight().getValue();
-                }
-            } else if (code.charAt(i) == '.') {
-                place = map.get(place).getLeft().getValue();
+        char ValorReal = ' ';
+        for (int i = 0; i <= code.length()-1;i++){
+            if (code.charAt(i) == '-'){
+                try{
+                ValorReal = map.get(ValorReal).getRight().getValue();}catch(NullPointerException e){ System.out.println("NullPointer");}
+            }else{
+                try{
+                ValorReal = map.get(ValorReal).getLeft().getValue();}catch(NullPointerException e){ System.out.println("NullPointer");}
             }
         }
-        return map.get(place).getValue();
+        return ValorReal;
     }
 
     public String charToMorse(char c) {
-        LinkedList<Character> morse = new LinkedList<>();
-        while (map.get(c) != root) {
-            if (map.get(c).getParent().getLeft().getValue() == map.get(c).getValue()) {
-                morse.add('.');
-            } else if (map.get(c).getParent().getRight().getValue() == map.get(c).getValue()) {
-                morse.add('-');
-            }
-        }
+        char local = c;
         String retorno = "";
-        for (int i = morse.size(); i >= 0; i--) {
-            retorno += morse.get(i);
+        while (map.get(local) != root){
+            try{
+                if (map.get(local).getParent().getRight().getValue() == map.get(local).getValue()){
+                    retorno = retorno.concat("-");
+                }}catch (NullPointerException e) { System.out.println("Deu BO2 ");
+            }try{
+            if(map.get(local).getParent().getLeft().getValue() == map.get(local).getValue()){
+                    retorno  = retorno.concat(".");
+                }
+            }catch(NullPointerException e){System.out.println("Deu BO ");}
+            local = map.get(local).getParent().getValue();
+        }
+        String reverse = "";
+        for (int i = retorno.length() - 1; i >= 0; i--){
+            reverse += retorno.charAt(i);
         }
 
-        return retorno;
-    }
+        return reverse;}
 
     // Você deve mudar o recheio deste método, de
     // acordo com os requisitos não-funcionais.
     public LinkedList<String> getCodes() {
         LinkedList<String> Codigos = new LinkedList<>();
-        Character[] Alfabeto = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
-        for (int y=0; y <= Alfabeto.length;y++){
+        Character[] Alfabeto = new Character[]{'e','t','i','a','n','m','s','u','r','w','d','k','g','o','h','v','f','l','p','j','b','x','c','y','z','q','5','4','3','2','1','6','7','8','9','0'};
+        for (int y=0; y <= Alfabeto.length-1;y++){
             Codigos.add(charToMorse(Alfabeto[y]));
         }
         return Codigos;
