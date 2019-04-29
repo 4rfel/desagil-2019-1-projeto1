@@ -1,5 +1,6 @@
 package br.pro.hashi.ensino.desagil.projeto1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -29,12 +30,14 @@ public class SMSActivity extends AppCompatActivity {
 
         TextView textMessage = findViewById(R.id.text_message);
         TextView textPhone = findViewById(R.id.text_phone);
-        Button buttonSend = findViewById(R.id.button_send);
+        Button buttonSend = findViewById(R.id.button_send); // Botão de enviar
 
-        Button buttonDigit = findViewById(R.id.button_digit);
-        Button buttonDelete = findViewById(R.id.button_delete);
+        Button buttonDigit = findViewById(R.id.button_digit); // Botão de digitar (ponto ou barra)
+        Button buttonDelete = findViewById(R.id.button_delete); // Botão de apagar
 
-        Button buttonMsgPronta = findViewById(R.id.mmp);
+        Button buttonMsgPronta = findViewById(R.id.mmp); // Botão de mensagem pronta
+
+        Button buttonDict = findViewById(R.id.dict);
 
         final long bootTime = SystemClock.elapsedRealtime();
         lastClickTime = bootTime;
@@ -56,6 +59,15 @@ public class SMSActivity extends AppCompatActivity {
                 lastClickTime = timeNow;
                 }
             });
+
+        // Botão dicionário -> funcionalidade ainda a ser implementada
+//        buttonDict.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(this, activity_sms.class));
+//            }
+//        });
 
         // Botão Delete
         buttonDelete.setOnClickListener(new View.OnClickListener() {
