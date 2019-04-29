@@ -8,4 +8,6 @@
     <string name="envio">Enviar</string>
     <string name="space">Espaço</string>
     <string name="mmp">Mensagens Prontas</string>
+    <string name="dict">Dicionário</string>
+    <string name="back">Voltar</string>
 </resources>
