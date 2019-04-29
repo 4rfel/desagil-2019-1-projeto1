@@ -72,19 +72,24 @@ public class SMSActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Long timeNow = SystemClock.elapsedRealtime();
-                Long timeElapsed = SystemClock.elapsedRealtime() - lastClickTime;
                 if (textMessage.getText().toString().isEmpty()) {
                     showToast("A mensagem já está vazia!");
                 }
-                if (timeElapsed > 1200.0) {
-                    textMessage.setText("");
-                } else {
-                    modifyText = textMessage.getText().toString();
-                    modifyText = modifyText.substring(0, modifyText.length() - 1);
-                    textMessage.setText(modifyText);
+                modifyText = textMessage.getText().toString();
+                modifyText = modifyText.substring(0, modifyText.length() - 1);
+                textMessage.setText(modifyText);
+            }
+        });
+
+        buttonDelete.setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View view) {
+                if (textMessage.getText().toString().isEmpty()) {
+                    showToast("A mensagem já está vazia!");
                 }
-                lastClickTime = timeNow;
+                textMessage.setText("");
+                return true;
             }
         });
 
