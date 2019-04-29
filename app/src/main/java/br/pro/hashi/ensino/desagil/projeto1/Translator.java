@@ -14,12 +14,10 @@ public class Translator {
     // Você deve mudar o recheio deste construtor,
     // de acordo com os requisitos não-funcionais.
     public Translator() {
-        root = null;
-        map = null;
+        root = new Node(' ');
+        map = new HashMap<>();
         map.put('|',root);
-        String[] Morse = {".", "-", "..", ".-", "-.", "--", "...", "..-", ".-.", ".--", "-..", "-.-", "--.", "---", "....",
-                "...-", "..-.", ".-..", ".--.", ".---", "-...", "-..-", "-.-.", "-.--", "--..", "--.-",
-                ".....", "....-", "...--", "..---", ".----", "-....", "--...", "---..", "----.", "-----"};
+
         Node node0 = new Node('0');
         Node node9 = new Node('9');
         Node node8 = new Node('8');
@@ -62,11 +60,16 @@ public class Translator {
         Node nodeGhost3 = new Node('*');
 
         root.setLeft(nodeE);
-        root.setRight(nodeT);
-        nodeE.setLeft(nodeE);
-        nodeE.setRight(nodeA);
         nodeE.setParent(root);
+        nodeE.setLeft(nodeI);
+        nodeE.setRight(nodeA);
         map.put(nodeE.getValue(), nodeE);
+
+        root.setRight(nodeT);
+        nodeT.setParent(root);
+        nodeT.setLeft(nodeN);
+        nodeT.setRight(nodeM);
+        map.put(nodeT.getValue(), nodeT);
 
         nodeA.setParent(nodeE);
         nodeA.setRight(nodeW);
@@ -155,6 +158,9 @@ public class Translator {
         nodeB.setParent(nodeD);
         nodeB.setLeft(node6);
         map.put(nodeB.getValue(), nodeB);
+
+        node6.setParent(nodeB);
+        map.put(node6.getValue(), node6);
 
         nodeX.setParent(nodeD);
         map.put(nodeX.getValue(), nodeX);
