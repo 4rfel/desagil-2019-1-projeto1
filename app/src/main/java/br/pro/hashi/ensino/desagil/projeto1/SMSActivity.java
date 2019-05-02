@@ -31,6 +31,7 @@ public class SMSActivity extends AppCompatActivity {
 
         TextView textMessage = findViewById(R.id.text_message);
         TextView textPhone = findViewById(R.id.text_phone);
+
         Button buttonSend = findViewById(R.id.button_send); // Botão de enviar
 
         Button buttonDigit = findViewById(R.id.button_digit); // Botão de digitar (ponto ou barra)
@@ -124,42 +125,84 @@ public class SMSActivity extends AppCompatActivity {
                 }
             }
         });
+
         // Botão Envio
-        buttonSend.setOnClickListener((view) -> {
-            String message = textMessage.getText().toString();
-            String telephone = textPhone.getText().toString();
+        buttonSend.setOnClickListener(new View.OnClickListener() {
 
-            if (!numberContato) {
-                if (!PhoneNumberUtils.isGlobalPhoneNumber(telephone)) {
-                    showToast("Número inválido!");
-                    return;
+            @Override
+            public void onClick(View view) {
+                String message = textMessage.getText().toString();
+                String telephone = textPhone.getText().toString();
+                String last = "";
+                String letters = "";
+                boolean espaco = true;
+
+                if (!numberContato) {
+                    for(char c: telephone.toCharArray()){
+                        if(c=='.'||c=='-'){
+                            last += String.valueOf(c);
+                            espaco = false;
+                        }else{
+                            letters += String.valueOf(c);
+                        }
+                    }
+                    if (!espaco){
+                        char numero_char = translator.morseToChar(last);
+                        String numero_string = String.valueOf(numero_char);
+                        textPhone.setText("");
+                        textPhone.append(letters);
+                        textPhone.append(numero_string);
+                    }else{
+                        textPhone.append(" ");
+                    }
+                    if (!PhoneNumberUtils.isGlobalPhoneNumber(telephone)) {
+                        showToast("Número inválido!");
+                        return;
+                    } else {
+                        numberContato = true;
+                    }
                 } else {
-                    numberContato = true;
+                    for(char c: message.toCharArray()){
+                        if(c=='.'||c=='-'){
+                            last += String.valueOf(c);
+                            espaco = false;
+                        }else{
+                            letters += String.valueOf(c);
+                        }
+                    }
+                    if(!espaco){
+                        char numero_char = translator.morseToChar(last);
+                        String numero_string = String.valueOf(numero_char);
+                        textMessage.setText("");
+                        textMessage.append(letters);
+                        textMessage.append(numero_string);
+                    }else{
+                        textMessage.append(" ");
+                    }
+                    if (message.isEmpty()) {
+                        showToast("Mensagem inválida!");
+                        return;
+                    }
+
+                    String phone = textPhone.getText().toString();
+
+                    // Esta verificação do número de telefone é bem
+                    // rígida, pois exige até mesmo o código do país.
+                    if (!PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
+                        showToast("Número inválido!");
+                        return;
+                    }
+
+                    // Enviar uma mensagem de SMS. Por simplicidade,
+                    // não estou verificando se foi mesmo enviada,
+                    // mas é possível fazer uma versão que verifica.
+                    SmsManager manager = SmsManager.getDefault();
+                    manager.sendTextMessage(phone, null, message, null, null);
+
+                    // Limpar o campo para nenhum engraçadinho
+                    // ficar apertando o botão várias vezes.
+                    textMessage.setText("");
                 }
-            } else {
-                if (message.isEmpty()) {
-                    showToast("Mensagem inválida!");
-                    return;
-                }
-
-                String phone = textPhone.getText().toString();
-
-                // Esta verificação do número de telefone é bem
-                // rígida, pois exige até mesmo o código do país.
-                if (!PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
-                    showToast("Número inválido!");
-                    return;
-                }
-
-                // Enviar uma mensagem de SMS. Por simplicidade,
-                // não estou verificando se foi mesmo enviada,
-                // mas é possível fazer uma versão que verifica.
-                SmsManager manager = SmsManager.getDefault();
-                manager.sendTextMessage(phone, null, message, null, null);
-
-                // Limpar o campo para nenhum engraçadinho
-                // ficar apertando o botão várias vezes.
-                textMessage.setText("");
             }
         });
 
