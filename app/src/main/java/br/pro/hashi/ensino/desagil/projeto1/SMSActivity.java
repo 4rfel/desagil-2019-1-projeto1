@@ -22,6 +22,7 @@ public class SMSActivity extends AppCompatActivity {
 
     private String modifyText;
     private boolean numberContato = false;
+    private Translator translator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +36,13 @@ public class SMSActivity extends AppCompatActivity {
         Button buttonDigit = findViewById(R.id.button_digit); // Botão de digitar (ponto ou barra)
         Button buttonDelete = findViewById(R.id.button_delete); // Botão de apagar
 
+        Button buttonSpace = findViewById(R.id.space); // Botão do espaço
+
         Button buttonMsgPronta = findViewById(R.id.mmp); // Botão de mensagem pronta
 
         Button buttonDict = findViewById(R.id.dict);
+
+        translator = new Translator();
 
         textMessage.setText("");
 
@@ -84,7 +89,7 @@ public class SMSActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!numberContato) {
                     if (textPhone.getText().toString().isEmpty()) {
-                        showToast("O campo está vazio!");
+                        showToast("O telefone está vazio!");
                     }
                     modifyText = textPhone.getText().toString();
                     modifyText = modifyText.substring(0, modifyText.length() - 1);
@@ -104,11 +109,19 @@ public class SMSActivity extends AppCompatActivity {
 
             @Override
             public boolean onLongClick(View view) {
-                if (textMessage.getText().toString().isEmpty()) {
-                    showToast("A mensagem já está vazia!");
+                if (!numberContato){
+                    if (textPhone.getText().toString().isEmpty()) {
+                        showToast("O número já está vazio!");
+                    }
+                    textPhone.setText("");
+                    return true;
+                }else{
+                    if (textMessage.getText().toString().isEmpty()) {
+                        showToast("A mensagem já está vazia!");
+                    }
+                    textMessage.setText("");
+                    return true;
                 }
-                textMessage.setText("");
-                return true;
             }
         });
         // Botão Envio
@@ -146,8 +159,61 @@ public class SMSActivity extends AppCompatActivity {
 
                 // Limpar o campo para nenhum engraçadinho
                 // ficar apertando o botão várias vezes.
-                textPhone.setText("");
+                textMessage.setText("");
             }
         });
+
+        // Botão Espaço
+        buttonSpace.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                String message = textMessage.getText().toString();
+                String telephone = textPhone.getText().toString();
+                String last = "";
+                String letters = "";
+                boolean espaco = true;
+                if (!numberContato){
+                    for(char c: telephone.toCharArray()){
+                        if(c=='.'||c=='-'){
+                            last += String.valueOf(c);
+                            espaco = false;
+                        }else{
+                            letters += String.valueOf(c);
+                        }
+                    }
+                    if (!espaco){
+                        char numero_char = translator.morseToChar(last);
+                        String numero_string = String.valueOf(numero_char);
+                        textPhone.setText("");
+                        textPhone.append(letters);
+                        textPhone.append(numero_string);
+                    }else{
+                        textPhone.append(" ");
+                    }
+
+                }else{
+                    for(char c: message.toCharArray()){
+                        if(c=='.'||c=='-'){
+                            last += String.valueOf(c);
+                            espaco = false;
+                        }else{
+                            letters += String.valueOf(c);
+                        }
+                    }
+                    if(!espaco){
+                        char numero_char = translator.morseToChar(last);
+                        String numero_string = String.valueOf(numero_char);
+                        textMessage.setText("");
+                        textMessage.append(letters);
+                        textMessage.append(numero_string);
+                    }else{
+                        textMessage.append(" ");
+                    }
+
+                }
+            }
+        });
+
     }
 }
