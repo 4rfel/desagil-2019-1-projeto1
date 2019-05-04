@@ -10,4 +10,12 @@
     <string name="mmp">Mensagens Prontas</string>
     <string name="dict">Dicionário</string>
     <string name="back">Voltar</string>
+    <string name="mmp0">Estou com fome!</string>
+    <string name="mmp1">Estou com sede!</string>
+    <string name="mmp2">Estou com dor!</string>
+    <string name="mmp3">Venha aqui rápido!</string>
+    <string name="mmp4">Preciso ir ao banheiro!</string>
+    <string name="cima">^</string>
+    <string name="baixo">v</string>
+    <string name="selectButton">Selecionar</string>
 </resources>
