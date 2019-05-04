@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="8dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingEnd="8dp"
+    android:layout_row="5"
+    tools:context=".ReadyText">
+
+
+    <ScrollView
+        android:layout_width="309dp"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mmp0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mmp0"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/mmp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mmp1"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/mmp2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mmp2"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/mmp3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mmp3"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/mmp4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mmp4"
+                android:textSize="20sp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/upButton"
+        android:layout_width="200dp"
+        android:layout_height="98dp"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginStart="80dp"
+        android:textSize="23sp"
+        android:hint="@string/cima"/>
+
+    <Button android:id="@+id/backButton"
+        android:layout_width="60dp"
+        android:layout_height="197dp"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="20dp"
+        android:hint="@string/back"
+        android:textSize="12sp"/>
+
+    <Button android:id="@+id/selectButton"
+        android:layout_width="60dp"
+        android:layout_height="197dp"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:textSize="12sp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="280dp"
+        android:hint="@string/selectButton"/>
+
+    <Button
+        android:id="@+id/downButton"
+        android:layout_width="200dp"
+        android:layout_height="98dp"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="110dp"
+        android:textSize="17sp"
+        android:hint="@string/baixo"/>
+
+</GridLayout>
