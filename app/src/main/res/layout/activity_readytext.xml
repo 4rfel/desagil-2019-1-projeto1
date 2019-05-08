@@ -28,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/mmp0"
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
 
             <TextView
@@ -35,12 +36,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/mmp1"
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/mmp2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="@string/mmp2"
                 android:textSize="20sp"/>
 
@@ -48,6 +51,7 @@
                 android:id="@+id/mmp3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="@string/mmp3"
                 android:textSize="20sp"/>
 
@@ -55,6 +59,7 @@
                 android:id="@+id/mmp4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="@string/mmp4"
                 android:textSize="20sp"/>
         </LinearLayout>

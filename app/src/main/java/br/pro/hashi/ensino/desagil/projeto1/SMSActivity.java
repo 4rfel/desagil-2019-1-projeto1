@@ -44,11 +44,17 @@ public class SMSActivity extends AppCompatActivity {
 
         Button buttonSpace = findViewById(R.id.space); // Botão do espaço
 
-        Button buttonMsgPronta = findViewById(R.id.mmp); // Botão de mensagem pronta
-
 
         Button buttonDict = findViewById(R.id.dict);
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        if (bundle != null) {
+            String msgPronta = bundle.getString("message");
+            textMessage.setText(msgPronta);
+        }
+      
         Button buttonContato = findViewById(R.id.contato);
 
         translator = new Translator();
@@ -248,11 +254,11 @@ public class SMSActivity extends AppCompatActivity {
                         textPhone.setText("");
                         textPhone.append(letters);
                         textPhone.append(numero_string);
-                    }else{
+                    } else {
                         textPhone.append(" ");
                     }
 
-                }else{
+                } else {
                     for(char c: message.toCharArray()){
                         if(c=='.'||c=='-'){
                             last += String.valueOf(c);

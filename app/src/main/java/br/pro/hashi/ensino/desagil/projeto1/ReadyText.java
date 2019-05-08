@@ -23,7 +23,7 @@ public class ReadyText extends AppCompatActivity {
 
     private String selectedMsg;
     private int msgCounter = 0;
-    private LinkedList<TextView> seletor = new LinkedList<>();
+    private LinkedList<MsgPronta> seletor = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +36,17 @@ public class ReadyText extends AppCompatActivity {
         TextView msgPronta3 = findViewById(R.id.mmp3);
         TextView msgPronta4 = findViewById(R.id.mmp4);
 
-        seletor.add(msgPronta0);
-        seletor.add(msgPronta1);
-        seletor.add(msgPronta2);
-        seletor.add(msgPronta3);
-        seletor.add(msgPronta4);
+        MsgPronta message0 = new MsgPronta(msgPronta0, this);
+        MsgPronta message1 = new MsgPronta(msgPronta1, this);
+        MsgPronta message2 = new MsgPronta(msgPronta2, this);
+        MsgPronta message3 = new MsgPronta(msgPronta3, this);
+        MsgPronta message4 = new MsgPronta(msgPronta4, this);
+
+        seletor.add(message0);
+        seletor.add(message1);
+        seletor.add(message2);
+        seletor.add(message3);
+        seletor.add(message4);
 
         // Botão para voltar a tela principal
         Button backButton = findViewById(R.id.backButton);
@@ -63,11 +69,14 @@ public class ReadyText extends AppCompatActivity {
                 } else {
                     msgCounter--;
                 }
-//                if (seletor.get(msgCounter + 1).getTextColors().equals(R.color.red)) {
-//
-//                }
-                seletor.get(msgCounter).setTextColor(getColor(R.color.red));
-                selectedMsg = seletor.get(msgCounter).getText().toString();
+                for (MsgPronta message: seletor) {
+                    if (message.getFlag()) {
+                        message.setFlagFalse();
+                        message.paintMessage();
+                    }
+                }
+                seletor.get(msgCounter).setFlagTrue();
+                seletor.get(msgCounter).paintMessage();
             }
         });
 
@@ -82,10 +91,17 @@ public class ReadyText extends AppCompatActivity {
                 } else {
                     msgCounter++;
                 }
-                seletor.get(msgCounter).setTextColor(getColor(R.color.red));
-                selectedMsg = seletor.get(msgCounter).getText().toString();
+                for (MsgPronta message: seletor) {
+                    if (message.getFlag()) {
+                        message.setFlagFalse();
+                        message.paintMessage();
+                    }
+                }
+                seletor.get(msgCounter).setFlagTrue();
+                seletor.get(msgCounter).paintMessage();
             }
         });
+
 
         // Botão para selecionar mensagem
         Button selectButton = findViewById(R.id.selectButton);
@@ -94,6 +110,7 @@ public class ReadyText extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                selectedMsg = seletor.get(msgCounter).getMessageString();
                 showToast("Mensagem escolhida!");
                 Intent intent = new Intent(ReadyText.this, SMSActivity.class);
                 intent.putExtra("message", selectedMsg);
