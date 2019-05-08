@@ -49,6 +49,8 @@ public class SMSActivity extends AppCompatActivity {
 
         Button buttonDict = findViewById(R.id.dict);
 
+        Button buttonContato = findViewById(R.id.contato);
+
         translator = new Translator();
 
         textMessage.setText("");

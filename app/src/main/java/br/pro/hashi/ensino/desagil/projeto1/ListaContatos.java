@@ -16,9 +16,13 @@ public class ListaContatos {
 
     }
 
-    public String getContact(){
+    public void getContact(){
         for (Map.Entry<String, String> entrada : lista.entrySet()){
-            System.out.println("Nome = " + entrada.getKey() + "Número = " + entrada.getValue());
+
+            String nome = entrada.getKey();
+            String num = entrada.getValue();
+
+            System.out.println("Nome = " + nome + "Número = " + num);
         }
 
     }
