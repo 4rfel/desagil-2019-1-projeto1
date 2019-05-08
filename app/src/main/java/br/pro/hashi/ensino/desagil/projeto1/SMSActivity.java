@@ -44,10 +44,16 @@ public class SMSActivity extends AppCompatActivity {
 
         Button buttonSpace = findViewById(R.id.space); // Botão do espaço
 
-        Button buttonMsgPronta = findViewById(R.id.mmp); // Botão de mensagem pronta
-
 
         Button buttonDict = findViewById(R.id.dict);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        if (bundle != null) {
+            String msgPronta = bundle.getString("message");
+            textMessage.setText(msgPronta);
+        }
 
         translator = new Translator();
 
