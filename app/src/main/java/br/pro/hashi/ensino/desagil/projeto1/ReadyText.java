@@ -36,11 +36,11 @@ public class ReadyText extends AppCompatActivity {
         TextView msgPronta3 = findViewById(R.id.mmp3);
         TextView msgPronta4 = findViewById(R.id.mmp4);
 
-        MsgPronta message0 = new MsgPronta(msgPronta0, this);
-        MsgPronta message1 = new MsgPronta(msgPronta1, this);
-        MsgPronta message2 = new MsgPronta(msgPronta2, this);
-        MsgPronta message3 = new MsgPronta(msgPronta3, this);
-        MsgPronta message4 = new MsgPronta(msgPronta4, this);
+        MsgPronta message0 = new MsgPronta(msgPronta0, true,this);
+        MsgPronta message1 = new MsgPronta(msgPronta1, false,this);
+        MsgPronta message2 = new MsgPronta(msgPronta2, false,this);
+        MsgPronta message3 = new MsgPronta(msgPronta3, false,this);
+        MsgPronta message4 = new MsgPronta(msgPronta4, false,this);
 
         seletor.add(message0);
         seletor.add(message1);

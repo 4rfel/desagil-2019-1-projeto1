@@ -11,9 +11,9 @@ public class MsgPronta {
     private boolean flag; // A flag diz se a menssagem está selecionada ou não
     private Context context;
 
-    public MsgPronta (TextView message, Context context) {
+    public MsgPronta (TextView message, Boolean flag, Context context) {
         this.message = message;
-        this.flag = false;
+        this.flag = flag;
         this.context = context;
     }
 
