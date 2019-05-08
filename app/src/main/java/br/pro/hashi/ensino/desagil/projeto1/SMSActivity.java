@@ -54,6 +54,8 @@ public class SMSActivity extends AppCompatActivity {
             String msgPronta = bundle.getString("message");
             textMessage.setText(msgPronta);
         }
+      
+        Button buttonContato = findViewById(R.id.contato);
 
         translator = new Translator();
 
@@ -252,11 +254,11 @@ public class SMSActivity extends AppCompatActivity {
                         textPhone.setText("");
                         textPhone.append(letters);
                         textPhone.append(numero_string);
-                    }else{
+                    } else {
                         textPhone.append(" ");
                     }
 
-                }else{
+                } else {
                     for(char c: message.toCharArray()){
                         if(c=='.'||c=='-'){
                             last += String.valueOf(c);
