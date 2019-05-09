@@ -52,6 +52,9 @@ public class SMSActivity extends AppCompatActivity {
                 startActivity(new Intent(SMSActivity.this, DicionarioActivity.class));
             }
         });
+
+        textMessage.setText("");
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
@@ -63,8 +66,6 @@ public class SMSActivity extends AppCompatActivity {
         Button buttonContato = findViewById(R.id.contato);
 
         translator = new Translator();
-
-        textMessage.setText("");
 
         // Botão do ponto ou barra
         buttonDigit.setOnClickListener(new View.OnClickListener() {
