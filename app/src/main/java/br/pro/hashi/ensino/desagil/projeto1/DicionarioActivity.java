@@ -1,10 +1,13 @@
 package br.pro.hashi.ensino.desagil.projeto1;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class DicionarioActivity extends AppCompatActivity {
 
@@ -12,6 +15,25 @@ public class DicionarioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dict);
+
+        Character[] alfa = new Character[]{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9'};
+        View linearlayout1 = findViewById(R.id.linear1);
+        View linearlayout2 = findViewById(R.id.linear2);
+        Translator tree = new Translator();
+        int i = 0;
+        for (Character c:alfa){
+            String morse = tree.charToMorse(c);
+            TextView texto = new TextView(this);
+            texto.setText(c.toString() + " || "+morse);
+            texto.setId(i);
+            texto.setLayoutParams(new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT));
+            if (i >= 17){
+                ((LinearLayout) linearlayout2).addView(texto);
+            }else{
+                ((LinearLayout) linearlayout1).addView(texto);
+            }
+            i++;
+        }
 
         // Botão para voltar a tela principal
         Button backButton = findViewById(R.id.back);

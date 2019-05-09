@@ -46,7 +46,12 @@ public class SMSActivity extends AppCompatActivity {
 
 
         Button buttonDict = findViewById(R.id.dict);
-
+        buttonDict.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SMSActivity.this, DicionarioActivity.class));
+            }
+        });
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
