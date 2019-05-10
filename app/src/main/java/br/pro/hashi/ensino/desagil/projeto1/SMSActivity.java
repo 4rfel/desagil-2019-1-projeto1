@@ -255,11 +255,16 @@ public class SMSActivity extends AppCompatActivity {
                         }
                     }
                     if (!espaco){
+                        if (last.length()!=5){
+                            showToast("Número Inválido");
+                            textPhone.setText("");
+                            textPhone.append(letters);
+                        }else{
                         char numero_char = translator.morseToChar(last);
                         String numero_string = String.valueOf(numero_char);
                         textPhone.setText("");
                         textPhone.append(letters);
-                        textPhone.append(numero_string);
+                        textPhone.append(numero_string);}
                     } else {
                         textPhone.append(" ");
                     }
@@ -274,6 +279,9 @@ public class SMSActivity extends AppCompatActivity {
                         }
                     }
                     if(!espaco){
+                        if (last.length()>5){
+                            showToast("Carácter inválido");
+                        }
                         char numero_char = translator.morseToChar(last);
                         String numero_string = String.valueOf(numero_char);
                         textMessage.setText("");
