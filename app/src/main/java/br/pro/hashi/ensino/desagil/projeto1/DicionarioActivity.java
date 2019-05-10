@@ -24,10 +24,11 @@ public class DicionarioActivity extends AppCompatActivity {
         for (Character c:alfa){
             String morse = tree.charToMorse(c);
             TextView texto = new TextView(this);
+            texto.setTextSize(14);
             texto.setText(c.toString() + " || "+morse);
             texto.setId(i);
             texto.setLayoutParams(new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT));
-            if (i >= 17){
+            if (i >= 18){
                 ((LinearLayout) linearlayout2).addView(texto);
             }else{
                 ((LinearLayout) linearlayout1).addView(texto);
