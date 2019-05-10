@@ -315,7 +315,12 @@ public class SMSActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                numberContato = false;
+                if (numberContato) {
+                    numberContato = false;
+                }
+                else {
+                    numberContato = true;
+                }
             }
         });
     }
