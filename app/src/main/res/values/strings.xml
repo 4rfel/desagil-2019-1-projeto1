@@ -20,4 +20,5 @@
     <string name="selectButton">Selecionar</string>
     <string name="editar">Editar</string>
     <string name="addContact">Adicionar Contato</string>
+    <string name="lista">Lista de Contatos:</string>
 </resources>
