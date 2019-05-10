@@ -53,6 +53,8 @@ public class SMSActivity extends AppCompatActivity {
         textMessage = findViewById(R.id.text_message);
         textPhone = findViewById(R.id.text_phone);
 
+        contactNumberMap = new HashMap<>();
+
         buttonSend = findViewById(R.id.button_send); // Botão de enviar
         buttonDigit = findViewById(R.id.button_digit); // Botão de digitar (ponto ou barra)
         buttonDelete = findViewById(R.id.button_delete); // Botão de apagar
@@ -68,7 +70,6 @@ public class SMSActivity extends AppCompatActivity {
                 Intent returnIntent = new Intent(SMSActivity.this,DicionarioActivity.class);
                 startActivityForResult(returnIntent,3);
             }
-
         });
 
         buttonAddContact.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +78,8 @@ public class SMSActivity extends AppCompatActivity {
                 String name = textMessage.getText().toString();
                 String telephone = textPhone.getText().toString();
                 contactNumberMap.put(name, telephone);
+                textMessage.setText("");
+                showToast("Contato adicionado");
             }
         });
 
@@ -98,7 +101,7 @@ public class SMSActivity extends AppCompatActivity {
             String msgPronta = bundle.getString("message");
             textMessage.setText(msgPronta);
         }
-      
+
         buttonContato = findViewById(R.id.contato);
 
         translator = new Translator();
@@ -129,15 +132,6 @@ public class SMSActivity extends AppCompatActivity {
                 }
             }
         });
-
-        // Botão dicionário -> funcionalidade ainda a ser implementada
-//        buttonDict.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(this, activity_sms.class));
-//            }
-//        });
 
         // Botão Delete
         buttonDelete.setOnClickListener(new View.OnClickListener() {
@@ -341,6 +335,8 @@ public class SMSActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
 
