@@ -330,7 +330,8 @@ public class SMSActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
         if (resultCode == 1){
-            textMessage.setText(data.getStringExtra("message"));
+            if (!data.getStringExtra("msg").isEmpty()){
+            textMessage.setText(data.getStringExtra("msg"));}
             textPhone.setText(data.getStringExtra("tele"));
         }
     }
