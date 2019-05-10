@@ -128,17 +128,17 @@ public class SMSActivity extends AppCompatActivity {
                 if (!numberContato) {
                     if (textPhone.getText().toString().isEmpty()) {
                         showToast("O telefone está vazio!");
-                    }
+                    }else{
                     modifyText = textPhone.getText().toString();
                     modifyText = modifyText.substring(0, modifyText.length() - 1);
-                    textPhone.setText(modifyText);
+                    textPhone.setText(modifyText);}
                 } else {
                     if (textMessage.getText().toString().isEmpty()) {
                         showToast("A mensagem já está vazia!");
-                    }
+                    }else{
                     modifyText = textMessage.getText().toString();
                     modifyText = modifyText.substring(0, modifyText.length() - 1);
-                    textMessage.setText(modifyText);
+                    textMessage.setText(modifyText);}
                 }
             }
         });
@@ -182,7 +182,6 @@ public class SMSActivity extends AppCompatActivity {
                 String last = "";
                 String letters = "";
 
-
                 if (!numberContato) {
                     for (char c : telephone.toCharArray()) {
                         if (c == '.' || c == '-') {
@@ -192,7 +191,6 @@ public class SMSActivity extends AppCompatActivity {
                             letters += String.valueOf(c);
                         }
                     }
-
                     char numero_char = translator.morseToChar(last);
                     String numero_string = String.valueOf(numero_char);
                     textPhone.setText("");
@@ -200,6 +198,7 @@ public class SMSActivity extends AppCompatActivity {
                     if (numero_char != ' '){
                         textPhone.append(numero_string);
                     }
+
 
                     if (!PhoneNumberUtils.isGlobalPhoneNumber(telephone)) {
                         showToast("Número inválido!");
@@ -216,11 +215,12 @@ public class SMSActivity extends AppCompatActivity {
                         }
                     }
 
-                        char numero_char = translator.morseToChar(last);
-                        String numero_string = String.valueOf(numero_char);
-                        textMessage.setText("");
-                        textMessage.append(letters);
-                        textMessage.append(numero_string);
+                    char numero_char = translator.morseToChar(last);
+                    String numero_string = String.valueOf(numero_char);
+                    textMessage.setText("");
+                    textMessage.append(letters);
+                    textMessage.append(numero_string);
+
 
                     if (message.isEmpty()) {
                         showToast("Mensagem inválida!");
