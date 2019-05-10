@@ -19,4 +19,5 @@
     <string name="baixo">v</string>
     <string name="selectButton">Selecionar</string>
     <string name="editar">Editar</string>
+    <string name="addContact">Adicionar Contato</string>
 </resources>
