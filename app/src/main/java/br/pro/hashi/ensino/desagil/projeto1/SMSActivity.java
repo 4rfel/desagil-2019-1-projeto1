@@ -325,12 +325,9 @@ public class SMSActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                if (numberContato) {
-                    numberContato = false;
-                }
-                else {
-                    numberContato = true;
-                }
+                Intent returnIntent = new Intent(SMSActivity.this, ContactActivity.class);
+                returnIntent.putExtra("tel", textPhone.getText().toString());
+                startActivityForResult(returnIntent, 1);
             }
         });
 

@@ -21,4 +21,5 @@
     <string name="editar">Editar</string>
     <string name="addContact">Adicionar Contato</string>
     <string name="lista">Lista de Contatos:</string>
+    <string name="contato">Contatos</string>
 </resources>
