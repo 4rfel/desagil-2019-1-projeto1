@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+
 public class SMSActivity extends AppCompatActivity {
     private static final int RESUL_DIC = 0;
     // Método de conveniência para mostrar uma bolha de texto.
@@ -35,9 +38,12 @@ public class SMSActivity extends AppCompatActivity {
     protected Button buttonSpace; // Botão do espaço
     protected Button buttonDict;
     protected Button buttonContato;
+    protected Button buttonAddContact;
 
     private String savingPhoneText;
     private String savingMessageText;
+
+    private HashMap<String, String> contactNumberMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,8 @@ public class SMSActivity extends AppCompatActivity {
         buttonReadyText = findViewById(R.id.mmp); // Botão de mensagem pronta
         buttonSpace = findViewById(R.id.space); // Botão do espaço
         buttonDict = findViewById(R.id.dict);
+        buttonAddContact = findViewById(R.id.addContact);
+
 
         buttonDict.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +70,16 @@ public class SMSActivity extends AppCompatActivity {
             }
 
         });
+
+        buttonAddContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = textMessage.getText().toString();
+                String telephone = textPhone.getText().toString();
+                contactNumberMap.put(name, telephone);
+            }
+        });
+
 
         if (savingMessageText != null) {
             textMessage.setText(savingMessageText);
