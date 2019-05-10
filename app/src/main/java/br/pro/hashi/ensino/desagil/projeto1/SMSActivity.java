@@ -181,26 +181,26 @@ public class SMSActivity extends AppCompatActivity {
                 String telephone = textPhone.getText().toString();
                 String last = "";
                 String letters = "";
-                boolean espaco = true;
+
 
                 if (!numberContato) {
-                    for(char c: telephone.toCharArray()){
-                        if(c=='.'||c=='-'){
+                    for (char c : telephone.toCharArray()) {
+                        if (c == '.' || c == '-') {
                             last += String.valueOf(c);
-                            espaco = false;
-                        }else{
+
+                        } else if(c != ' '){
                             letters += String.valueOf(c);
                         }
                     }
-                    if (!espaco){
-                        char numero_char = translator.morseToChar(last);
-                        String numero_string = String.valueOf(numero_char);
-                        textPhone.setText("");
-                        textPhone.append(letters);
+
+                    char numero_char = translator.morseToChar(last);
+                    String numero_string = String.valueOf(numero_char);
+                    textPhone.setText("");
+                    textPhone.append(letters);
+                    if (numero_char != ' '){
                         textPhone.append(numero_string);
-                    }else{
-                        textPhone.append(" ");
                     }
+
                     if (!PhoneNumberUtils.isGlobalPhoneNumber(telephone)) {
                         showToast("Número inválido!");
                         return;
@@ -211,20 +211,17 @@ public class SMSActivity extends AppCompatActivity {
                     for(char c: message.toCharArray()){
                         if(c=='.'||c=='-'){
                             last += String.valueOf(c);
-                            espaco = false;
                         }else{
                             letters += String.valueOf(c);
                         }
                     }
-                    if(!espaco){
+
                         char numero_char = translator.morseToChar(last);
                         String numero_string = String.valueOf(numero_char);
                         textMessage.setText("");
                         textMessage.append(letters);
                         textMessage.append(numero_string);
-                    }else{
-                        textMessage.append(" ");
-                    }
+
                     if (message.isEmpty()) {
                         showToast("Mensagem inválida!");
                         return;
@@ -262,29 +259,25 @@ public class SMSActivity extends AppCompatActivity {
                 String last = "";
                 String letters = "";
                 boolean espaco = true;
+
                 if (!numberContato){
                     for(char c: telephone.toCharArray()){
                         if(c=='.'||c=='-'){
                             last += String.valueOf(c);
-                            espaco = false;
                         }else{
                             letters += String.valueOf(c);
                         }
                     }
-                    if (!espaco){
-                        if (last.length()!=5){
-                            showToast("Número Inválido");
-                            textPhone.setText("");
-                            textPhone.append(letters);
-                        }else{
+                    if (last.length()!=5){
+                        showToast("Número Inválido");
+                        textPhone.setText("");
+                        textPhone.append(letters);
+                    }else{
                         char numero_char = translator.morseToChar(last);
                         String numero_string = String.valueOf(numero_char);
                         textPhone.setText("");
                         textPhone.append(letters);
                         textPhone.append(numero_string);}
-                    } else {
-                        textPhone.append(" ");
-                    }
 
                 } else {
                     for(char c: message.toCharArray()){
