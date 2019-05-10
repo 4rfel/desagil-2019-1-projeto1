@@ -11,6 +11,7 @@ import android.widget.Toast;
 import java.util.LinkedList;
 
 public class ReadyText extends AppCompatActivity {
+    String tel;
     // Método de conveniência para mostrar uma bolha de texto.
     private void showToast(String text) {
 
@@ -29,6 +30,8 @@ public class ReadyText extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_readytext);
+
+        tel = getIntent().getExtras().getString("tel");
 
         TextView msgPronta0 = findViewById(R.id.mmp0);
         TextView msgPronta1 = findViewById(R.id.mmp1);
@@ -54,7 +57,10 @@ public class ReadyText extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ReadyText.this, SMSActivity.class));
+                Intent intent=new Intent(ReadyText.this,SMSActivity.class);
+                intent.putExtra("msg",selectedMsg);
+                setResult(1,intent);
+                finish();
             }
         });
 
@@ -114,7 +120,9 @@ public class ReadyText extends AppCompatActivity {
                 showToast("Mensagem escolhida!");
                 Intent intent = new Intent(ReadyText.this, SMSActivity.class);
                 intent.putExtra("message", selectedMsg);
-                startActivity(intent);
+                intent.putExtra("tele",tel);
+                setResult(1,intent);
+                finish();
             }
         });
     }
