@@ -308,8 +308,17 @@ public class SMSActivity extends AppCompatActivity {
                 }
             }
         });
+        // Botão Espaço
+        buttonContato.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View view) {
+                numberContato = false;
+            }
+        });
     }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
