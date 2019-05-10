@@ -11,10 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SMSActivity extends AppCompatActivity {
-
+    private static final int RESUL_DIC = 0;
     // Método de conveniência para mostrar uma bolha de texto.
     private void showToast(String text) {
-
         // Constrói uma bolha de duração curta.
         Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
 
@@ -58,8 +57,10 @@ public class SMSActivity extends AppCompatActivity {
         buttonDict.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SMSActivity.this, DicionarioActivity.class));
+                Intent returnIntent = new Intent(SMSActivity.this,DicionarioActivity.class);
+                startActivityForResult(returnIntent,3);
             }
+
         });
 
         if (savingMessageText != null) {
@@ -309,7 +310,10 @@ public class SMSActivity extends AppCompatActivity {
         });
 
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+    }
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
