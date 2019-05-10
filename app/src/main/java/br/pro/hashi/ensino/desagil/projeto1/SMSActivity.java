@@ -111,17 +111,17 @@ public class SMSActivity extends AppCompatActivity {
                 if (!numberContato) {
                     if (textPhone.getText().toString().isEmpty()) {
                         showToast("O telefone está vazio!");
-                    }
+                    }else{
                     modifyText = textPhone.getText().toString();
                     modifyText = modifyText.substring(0, modifyText.length() - 1);
-                    textPhone.setText(modifyText);
+                    textPhone.setText(modifyText);}
                 } else {
                     if (textMessage.getText().toString().isEmpty()) {
                         showToast("A mensagem já está vazia!");
-                    }
+                    }else{
                     modifyText = textMessage.getText().toString();
                     modifyText = modifyText.substring(0, modifyText.length() - 1);
-                    textMessage.setText(modifyText);
+                    textMessage.setText(modifyText);}
                 }
             }
         });
@@ -164,26 +164,21 @@ public class SMSActivity extends AppCompatActivity {
                 String telephone = textPhone.getText().toString();
                 String last = "";
                 String letters = "";
-                boolean espaco = true;
 
                 if (!numberContato) {
                     for(char c: telephone.toCharArray()){
                         if(c=='.'||c=='-'){
                             last += String.valueOf(c);
-                            espaco = false;
                         }else{
                             letters += String.valueOf(c);
                         }
                     }
-                    if (!espaco){
-                        char numero_char = translator.morseToChar(last);
-                        String numero_string = String.valueOf(numero_char);
-                        textPhone.setText("");
-                        textPhone.append(letters);
-                        textPhone.append(numero_string);
-                    }else{
-                        textPhone.append(" ");
-                    }
+                    char numero_char = translator.morseToChar(last);
+                    String numero_string = String.valueOf(numero_char);
+                    textPhone.setText("");
+                    textPhone.append(letters);
+                    textPhone.append(numero_string);
+
                     if (!PhoneNumberUtils.isGlobalPhoneNumber(telephone)) {
                         showToast("Número inválido!");
                         return;
@@ -194,20 +189,16 @@ public class SMSActivity extends AppCompatActivity {
                     for(char c: message.toCharArray()){
                         if(c=='.'||c=='-'){
                             last += String.valueOf(c);
-                            espaco = false;
                         }else{
                             letters += String.valueOf(c);
                         }
                     }
-                    if(!espaco){
-                        char numero_char = translator.morseToChar(last);
-                        String numero_string = String.valueOf(numero_char);
-                        textMessage.setText("");
-                        textMessage.append(letters);
-                        textMessage.append(numero_string);
-                    }else{
-                        textMessage.append(" ");
-                    }
+                    char numero_char = translator.morseToChar(last);
+                    String numero_string = String.valueOf(numero_char);
+                    textMessage.setText("");
+                    textMessage.append(letters);
+                    textMessage.append(numero_string);
+
                     if (message.isEmpty()) {
                         showToast("Mensagem inválida!");
                         return;
@@ -249,25 +240,20 @@ public class SMSActivity extends AppCompatActivity {
                     for(char c: telephone.toCharArray()){
                         if(c=='.'||c=='-'){
                             last += String.valueOf(c);
-                            espaco = false;
                         }else{
                             letters += String.valueOf(c);
                         }
                     }
-                    if (!espaco){
                         if (last.length()!=5){
                             showToast("Número Inválido");
                             textPhone.setText("");
                             textPhone.append(letters);
                         }else{
-                        char numero_char = translator.morseToChar(last);
-                        String numero_string = String.valueOf(numero_char);
-                        textPhone.setText("");
-                        textPhone.append(letters);
-                        textPhone.append(numero_string);}
-                    } else {
-                        textPhone.append(" ");
-                    }
+                            char numero_char = translator.morseToChar(last);
+                            String numero_string = String.valueOf(numero_char);
+                            textPhone.setText("");
+                            textPhone.append(letters);
+                            textPhone.append(numero_string);}
 
                 } else {
                     for(char c: message.toCharArray()){
