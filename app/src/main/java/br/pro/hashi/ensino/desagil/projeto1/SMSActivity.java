@@ -130,15 +130,6 @@ public class SMSActivity extends AppCompatActivity {
             }
         });
 
-        // Botão dicionário -> funcionalidade ainda a ser implementada
-//        buttonDict.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(this, activity_sms.class));
-//            }
-//        });
-
         // Botão Delete
         buttonDelete.setOnClickListener(new View.OnClickListener() {
 
@@ -341,6 +332,8 @@ public class SMSActivity extends AppCompatActivity {
                 }
             }
         });
+
+        
     }
 
 
