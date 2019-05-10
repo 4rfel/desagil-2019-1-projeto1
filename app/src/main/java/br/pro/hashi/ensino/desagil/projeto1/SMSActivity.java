@@ -44,6 +44,7 @@ public class SMSActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms);
 
+
         textMessage = findViewById(R.id.text_message);
         textPhone = findViewById(R.id.text_phone);
 
@@ -315,7 +316,7 @@ public class SMSActivity extends AppCompatActivity {
             }
         });
 
-        
+
     }
 
 
