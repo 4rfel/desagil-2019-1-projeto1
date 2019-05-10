@@ -18,4 +18,5 @@
     <string name="cima">^</string>
     <string name="baixo">v</string>
     <string name="selectButton">Selecionar</string>
+    <string name="Editar">Editar número</string>
 </resources>

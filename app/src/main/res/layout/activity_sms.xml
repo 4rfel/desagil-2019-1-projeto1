@@ -86,7 +86,7 @@ android:rowCount="2"
         android:layout_marginBottom="80dp"
         android:layout_marginStart="170dp"
         android:textSize="15sp"
-        android:hint="Contato"/>
+        android:hint="@+string/Editar"/>
 
     <Button android:id="@+id/space"
         android:layout_width="60dp"
