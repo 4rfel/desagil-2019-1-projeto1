@@ -290,13 +290,16 @@ public class SMSActivity extends AppCompatActivity {
                     }
                     if(!espaco){
                         if (last.length()>5){
-                            showToast("Carácter inválido");
+                            showToast("Caractere inválido");
+                            textMessage.setText("");
+                            textMessage.append(letters);
+                        } else {
+                            char numero_char = translator.morseToChar(last);
+                            String numero_string = String.valueOf(numero_char);
+                            textMessage.setText("");
+                            textMessage.append(letters);
+                            textMessage.append(numero_string);
                         }
-                        char numero_char = translator.morseToChar(last);
-                        String numero_string = String.valueOf(numero_char);
-                        textMessage.setText("");
-                        textMessage.append(letters);
-                        textMessage.append(numero_string);
                     }else{
                         textMessage.append(" ");
                     }
