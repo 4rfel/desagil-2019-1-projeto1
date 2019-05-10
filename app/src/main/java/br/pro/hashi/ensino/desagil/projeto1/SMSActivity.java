@@ -63,7 +63,7 @@ public class SMSActivity extends AppCompatActivity {
         buttonReadyText = findViewById(R.id.mmp); // Botão de mensagem pronta
         buttonSpace = findViewById(R.id.space); // Botão do espaço
         buttonDict = findViewById(R.id.dict);
-        buttonAddContact = findViewById(R.id.dict);
+        buttonAddContact = findViewById(R.id.addContact);
 
 
         buttonDict.setOnClickListener(new View.OnClickListener() {
