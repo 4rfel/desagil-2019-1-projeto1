@@ -48,22 +48,21 @@ public class DicionarioActivity extends AppCompatActivity {
             }
         });
 
-        LinkedList<String> Morse = new LinkedList<>(Translator.getCodes());
+        LinkedList<String> Morse = new LinkedList<>(tree.getCodes());
         View linearlayout3 = findViewById(R.id.linear3);
         View linearlayout4 = findViewById(R.id.linear4);
         int j = 0;
         Character[] Alfabeto = new Character[]{'e','t','i','a','n','m','s','u','r','w','d','k','g','o','h','v','f','l','p','j','b','x','c','y','z','q','5','4','3','2','1','6','7','8','9','0'};
-
         for (String c:Morse){
             TextView texto = new TextView(this);
             texto.setTextSize(14);
-            texto.setText(Alfabeto[j] +" || " + j );
+            texto.setText(Alfabeto[j].toString() +" || " + c );
             texto.setId(j);
             texto.setLayoutParams(new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT));
             if (j >= 18){
-                ((LinearLayout) linearlayout2).addView(texto);
+                ((LinearLayout) linearlayout3).addView(texto);
             }else{
-                ((LinearLayout) linearlayout1).addView(texto);
+                ((LinearLayout) linearlayout4).addView(texto);
             }
             j++;
 
