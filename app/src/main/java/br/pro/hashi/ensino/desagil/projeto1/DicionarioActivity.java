@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class DicionarioActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +38,11 @@ public class DicionarioActivity extends AppCompatActivity {
         // Botão para voltar a tela principal
         Button backButton = findViewById(R.id.back);
         backButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DicionarioActivity.this, SMSActivity.class));
+                Intent intent=new Intent(DicionarioActivity.this,SMSActivity.class);
+                setResult(2,intent);
+                finish();
             }
         });
     }
