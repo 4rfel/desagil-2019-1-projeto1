@@ -10,29 +10,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="2"
+    android:columnCount="4"
     android:rowCount="3"
     android:paddingRight="16dp"
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     tools:context=".SMSActivity">
-
-
     <TextView
         android:id="@+id/titulo"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_row="1"
-        android:layout_column="0"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:layout_columnSpan="3"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:hint="Dicionário Morse:"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:textColor="@color/colorDict"
         />
-
-
+    <TextView
+        android:id="@+id/alfa"
+        android:text="Alfabeto:"
+        android:textSize="24sp"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_row="1"
+        />
+    <TextView
+        android:id="@+id/arvore"
+        android:text="Arvore"
+        android:textSize="24sp"
+        android:layout_row="1"
+        android:layout_column="2"
+        android:layout_columnSpan="2"
+        />
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
@@ -44,18 +57,19 @@
     <ScrollView
         android:layout_column="0"
         android:layout_row="2"
-        android:layout_width="150dp"
+        android:layout_width="80dp"
         android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/linear1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginRight="5dp">
         </LinearLayout>
     </ScrollView>
 
     <ScrollView
-        android:layout_width="625dp"
+        android:layout_width="80dp"
         android:layout_height="match_parent"
         android:layout_row="2"
         android:layout_column="1">
@@ -64,8 +78,34 @@
             android:id="@+id/linear2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:layout_marginRight="5dp">
+        </LinearLayout>
+    </ScrollView>
+    <ScrollView
+        android:layout_column="2"
+        android:layout_row="2"
+        android:layout_height="match_parent"
+        android:layout_width="80dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linear3"
+            android:orientation="vertical"
+            android:layout_marginRight="5dp">
+        </LinearLayout>
+    </ScrollView>
+    <ScrollView
+        android:layout_column="3"
+        android:layout_row="2"
+        android:layout_height="match_parent"
+        android:layout_width="80dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linear4"
+            android:orientation="vertical"
+            android:layout_marginRight="5dp">
         </LinearLayout>
     </ScrollView>
 </GridLayout>
