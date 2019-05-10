@@ -169,7 +169,9 @@ public class SMSActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SMSActivity.this, ReadyText.class));
+                Intent returnIntent = new Intent(SMSActivity.this,ReadyText.class);
+                returnIntent.putExtra("tel",textPhone.getText().toString());
+                startActivityForResult(returnIntent,1);
             }
         });
 
@@ -313,6 +315,10 @@ public class SMSActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
+        if (resultCode == 1){
+            textMessage.setText(data.getStringExtra("message"));
+            textPhone.setText(data.getStringExtra("tele"));
+        }
     }
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
