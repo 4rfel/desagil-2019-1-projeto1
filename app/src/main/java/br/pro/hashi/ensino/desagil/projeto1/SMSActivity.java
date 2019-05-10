@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Set;
 
 public class SMSActivity extends AppCompatActivity {
     private static final int RESUL_DIC = 0;
@@ -160,6 +161,14 @@ public class SMSActivity extends AppCompatActivity {
 
             @Override
             public boolean onLongClick(View view) {
+
+//                String name;
+//                String number;
+//                for(String a: contactNumberMap.keySet()){
+//                    name = a;
+//                    number = contactNumberMap.get(a);
+//                }
+
                 if (!numberContato){
                     if (textPhone.getText().toString().isEmpty()) {
                         showToast("O número já está vazio!");
@@ -366,5 +375,4 @@ public class SMSActivity extends AppCompatActivity {
         textMessage.setText(savingMessageText);
         textPhone.setText(savingPhoneText);
     }
-
 }
