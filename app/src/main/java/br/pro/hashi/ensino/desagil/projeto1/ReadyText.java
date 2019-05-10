@@ -22,7 +22,7 @@ public class ReadyText extends AppCompatActivity {
         toast.show();
     }
 
-    private String selectedMsg;
+    private String selectedMsg = "";
     private int msgCounter = 0;
     private LinkedList<MsgPronta> seletor = new LinkedList<>();
 
@@ -59,6 +59,7 @@ public class ReadyText extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(ReadyText.this,SMSActivity.class);
                 intent.putExtra("msg",selectedMsg);
+                intent.putExtra("tele",tel);
                 setResult(1,intent);
                 finish();
             }
@@ -119,7 +120,7 @@ public class ReadyText extends AppCompatActivity {
                 selectedMsg = seletor.get(msgCounter).getMessageString();
                 showToast("Mensagem escolhida!");
                 Intent intent = new Intent(ReadyText.this, SMSActivity.class);
-                intent.putExtra("message", selectedMsg);
+                intent.putExtra("msg", selectedMsg);
                 intent.putExtra("tele",tel);
                 setResult(1,intent);
                 finish();
