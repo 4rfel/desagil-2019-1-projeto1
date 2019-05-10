@@ -26,26 +26,35 @@ public class SMSActivity extends AppCompatActivity {
     private boolean numberContato = false;
     private Translator translator;
 
+    private TextView textMessage;
+    private TextView textPhone;
+
+    protected Button buttonSend; // Botão de enviar
+    protected Button buttonDigit; // Botão de digitar (ponto ou barra)
+    protected Button buttonDelete; // Botão de apagar
+    protected Button buttonReadyText; // Botão de mensagem pronta
+    protected Button buttonSpace; // Botão do espaço
+    protected Button buttonDict;
+    protected Button buttonContato;
+
+    private String savingPhoneText;
+    private String savingMessageText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms);
 
-        TextView textMessage = findViewById(R.id.text_message);
-        TextView textPhone = findViewById(R.id.text_phone);
+        textMessage = findViewById(R.id.text_message);
+        textPhone = findViewById(R.id.text_phone);
 
-        Button buttonSend = findViewById(R.id.button_send); // Botão de enviar
+        buttonSend = findViewById(R.id.button_send); // Botão de enviar
+        buttonDigit = findViewById(R.id.button_digit); // Botão de digitar (ponto ou barra)
+        buttonDelete = findViewById(R.id.button_delete); // Botão de apagar
+        buttonReadyText = findViewById(R.id.mmp); // Botão de mensagem pronta
+        buttonSpace = findViewById(R.id.space); // Botão do espaço
+        buttonDict = findViewById(R.id.dict);
 
-        Button buttonDigit = findViewById(R.id.button_digit); // Botão de digitar (ponto ou barra)
-        Button buttonDelete = findViewById(R.id.button_delete); // Botão de apagar
-
-
-        Button buttonReadyText = findViewById(R.id.mmp); // Botão de mensagem pronta
-
-        Button buttonSpace = findViewById(R.id.space); // Botão do espaço
-
-
-        Button buttonDict = findViewById(R.id.dict);
         buttonDict.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +62,15 @@ public class SMSActivity extends AppCompatActivity {
             }
         });
 
-        textMessage.setText("");
+        if (savingMessageText != null) {
+            textMessage.setText(savingMessageText);
+        } else {
+            textMessage.setText("");
+        }
+
+        if (savingPhoneText != null) {
+            textPhone.setText(savingPhoneText);
+        }
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -63,7 +80,7 @@ public class SMSActivity extends AppCompatActivity {
             textMessage.setText(msgPronta);
         }
       
-        Button buttonContato = findViewById(R.id.contato);
+        buttonContato = findViewById(R.id.contato);
 
         translator = new Translator();
 
@@ -288,4 +305,23 @@ public class SMSActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savingPhoneText = textPhone.getText().toString();
+        savingMessageText = textMessage.getText().toString();
+        savedInstanceState.putString("savingMessageText", savingMessageText);
+        savedInstanceState.putString("savingPhoneText", savingPhoneText);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        savingMessageText = savedInstanceState.getString("savingMessageText");
+        savingPhoneText = savedInstanceState.getString("savingPhoneText");
+        textMessage.setText(savingMessageText);
+        textPhone.setText(savingPhoneText);
+    }
+
 }
