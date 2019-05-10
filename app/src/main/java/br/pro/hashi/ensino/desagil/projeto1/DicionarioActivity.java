@@ -60,9 +60,9 @@ public class DicionarioActivity extends AppCompatActivity {
             texto.setId(j);
             texto.setLayoutParams(new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT));
             if (j >= 18){
-                ((LinearLayout) linearlayout3).addView(texto);
-            }else{
                 ((LinearLayout) linearlayout4).addView(texto);
+            }else{
+                ((LinearLayout) linearlayout3).addView(texto);
             }
             j++;
 
