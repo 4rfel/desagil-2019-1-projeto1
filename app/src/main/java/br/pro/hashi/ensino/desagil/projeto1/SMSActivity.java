@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Set;
 
 public class SMSActivity extends AppCompatActivity {
     private static final int RESUL_DIC = 0;
@@ -54,6 +55,8 @@ public class SMSActivity extends AppCompatActivity {
         textMessage = findViewById(R.id.text_message);
         textPhone = findViewById(R.id.text_phone);
 
+        contactNumberMap = new HashMap<>();
+
         buttonSend = findViewById(R.id.button_send); // Botão de enviar
         buttonDigit = findViewById(R.id.button_digit); // Botão de digitar (ponto ou barra)
         buttonDelete = findViewById(R.id.button_delete); // Botão de apagar
@@ -69,7 +72,6 @@ public class SMSActivity extends AppCompatActivity {
                 Intent returnIntent = new Intent(SMSActivity.this,DicionarioActivity.class);
                 startActivityForResult(returnIntent,3);
             }
-
         });
 
         buttonAddContact.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +80,8 @@ public class SMSActivity extends AppCompatActivity {
                 String name = textMessage.getText().toString();
                 String telephone = textPhone.getText().toString();
                 contactNumberMap.put(name, telephone);
+                textMessage.setText("");
+                showToast("Contato adicionado");
             }
         });
 
@@ -99,7 +103,7 @@ public class SMSActivity extends AppCompatActivity {
             String msgPronta = bundle.getString("message");
             textMessage.setText(msgPronta);
         }
-      
+
         buttonContato = findViewById(R.id.contato);
 
         translator = new Translator();
@@ -158,6 +162,14 @@ public class SMSActivity extends AppCompatActivity {
 
             @Override
             public boolean onLongClick(View view) {
+
+//                String name;
+//                String number;
+//                for(String a: contactNumberMap.keySet()){
+//                    name = a;
+//                    number = contactNumberMap.get(a);
+//                }
+
                 if (!numberContato){
                     if (textPhone.getText().toString().isEmpty()) {
                         showToast("O número já está vazio!");
@@ -361,5 +373,4 @@ public class SMSActivity extends AppCompatActivity {
         textMessage.setText(savingMessageText);
         textPhone.setText(savingPhoneText);
     }
-
 }
