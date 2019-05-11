@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.LinkedList;
+
 public class ContactActivity extends AppCompatActivity {
 
     protected Button backButton;
@@ -15,10 +17,16 @@ public class ContactActivity extends AppCompatActivity {
 
     private int contactCounter = 0;
 
+    protected String[] contactsNames;
+    protected String[] contactsNumbers;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+
+        contactsNames = new String[100];
+        contactsNumbers = new String[100];
 
         backButton = findViewById(R.id.backButton);
 
@@ -32,13 +40,15 @@ public class ContactActivity extends AppCompatActivity {
             }
         });
 
+        contactsNames = getIntent().getStringArrayExtra("names");
+        contactsNumbers = getIntent().getStringArrayExtra("numbers");
+
         upButton = findViewById(R.id.upButton);
 
         upButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-
             }
         });
 

@@ -44,7 +44,9 @@ public class SMSActivity extends AppCompatActivity {
     private String savingPhoneText;
     private String savingMessageText;
 
-    private HashMap<String, String> contactNumberMap;
+    String[] contactsNames;
+    String[] contactsNumbers;
+    int counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +57,9 @@ public class SMSActivity extends AppCompatActivity {
         textMessage = findViewById(R.id.text_message);
         textPhone = findViewById(R.id.text_phone);
 
-        contactNumberMap = new HashMap<>();
+        contactsNames = new String[100];
+        contactsNumbers = new String[100];
+        counter = 0;
 
         buttonSend = findViewById(R.id.button_send); // Botão de enviar
         buttonDigit = findViewById(R.id.button_digit); // Botão de digitar (ponto ou barra)
@@ -77,11 +81,18 @@ public class SMSActivity extends AppCompatActivity {
         buttonAddContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String name = textMessage.getText().toString();
                 String telephone = textPhone.getText().toString();
-                contactNumberMap.put(name, telephone);
-                textMessage.setText("");
-                showToast("Contato adicionado");
+                if(name != "" & telephone != ""){
+                    textMessage.setText("");
+                    showToast("Contato adicionado");
+                    contactsNames[counter] = name;
+                    contactsNumbers[counter] = telephone;
+
+                }else{
+                    showToast("Número ou Nome invalido");
+                }
             }
         });
 
@@ -162,13 +173,6 @@ public class SMSActivity extends AppCompatActivity {
 
             @Override
             public boolean onLongClick(View view) {
-
-//                String name;
-//                String number;
-//                for(String a: contactNumberMap.keySet()){
-//                    name = a;
-//                    number = contactNumberMap.get(a);
-//                }
 
                 if (!numberContato){
                     if (textPhone.getText().toString().isEmpty()) {
@@ -328,7 +332,6 @@ public class SMSActivity extends AppCompatActivity {
                     }else{
                         textMessage.append(" ");
                     }
-
                 }
             }
         });
@@ -339,6 +342,9 @@ public class SMSActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent returnIntent = new Intent(SMSActivity.this, ContactActivity.class);
                 returnIntent.putExtra("tel", textPhone.getText().toString());
+                returnIntent.putExtra("names", contactsNames);
+                returnIntent.putExtra("numbers", contactsNumbers);
+
                 startActivityForResult(returnIntent, 1);
             }
         });
