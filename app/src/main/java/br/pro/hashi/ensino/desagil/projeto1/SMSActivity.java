@@ -57,8 +57,8 @@ public class SMSActivity extends AppCompatActivity {
         textMessage = findViewById(R.id.text_message);
         textPhone = findViewById(R.id.text_phone);
 
-        contactsNames = new String[100];
-        contactsNumbers = new String[100];
+        contactsNames = new String[5];
+        contactsNumbers = new String[5];
         counter = 0;
 
         buttonSend = findViewById(R.id.button_send); // Botão de enviar
@@ -335,7 +335,6 @@ public class SMSActivity extends AppCompatActivity {
                 }
             }
         });
-        // Botão Espaço
         buttonContato.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -344,8 +343,7 @@ public class SMSActivity extends AppCompatActivity {
                 returnIntent.putExtra("tel", textPhone.getText().toString());
                 returnIntent.putExtra("names", contactsNames);
                 returnIntent.putExtra("numbers", contactsNumbers);
-
-                startActivityForResult(returnIntent, 1);
+                startActivityForResult(returnIntent, 7);
             }
         });
 
@@ -360,6 +358,8 @@ public class SMSActivity extends AppCompatActivity {
             if (!data.getStringExtra("msg").isEmpty()){
             textMessage.setText(data.getStringExtra("msg"));}
             textPhone.setText(data.getStringExtra("tele"));
+        }else if(resultCode == 7){
+            textPhone.setText(data.getStringExtra("tel"));
         }
     }
     @Override
