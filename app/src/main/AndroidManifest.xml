@@ -22,6 +22,5 @@
         </activity>
         <activity android:name=".ReadyText"/>
         <activity android:name=".DicionarioActivity"/>
-        <activity android:name=".ContactActivity"/>
     </application>
 </manifest>
